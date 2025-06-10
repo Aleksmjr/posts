@@ -19,12 +19,16 @@
     "globals": "^16.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
+    "sass-embedded": "^1.89.2",
     "stylelint": "^16.20.0",
-    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
     "vite": "^6.3.5"
   },
-    "lint-staged": {
-     "*.js": "eslint --fix",
+  "lint-staged": {
+    "*.js": "eslint --fix",
     "*.css": "stylelint --fix"
-}
+  },
+  "dependencies": {
+    "stylelint-config-clean-order": "^7.0.0"
+  }
 }
