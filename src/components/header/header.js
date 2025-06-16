@@ -1,3 +1,4 @@
+import './header.css';
 import { createElement } from '../../helpers/createElement';
 
 export function createHeader() {
@@ -14,18 +15,18 @@ export function createHeader() {
   const nav = createElement({ tag: 'nav', className: 'header__nav' });
 
   navItems.forEach((item) => {
-    const link = createElement({
-      tag: 'a',
-      className: 'header__link',
-      content: item.text,
-      href: item.href,
-    });
-
-    nav.appendChild(link);
+    nav.appendChild(
+      createElement({
+        tag: 'a',
+        className: 'header__link',
+        content: item.text,
+        href: item.href,
+      }),
+    );
   });
 
   container.appendChild(nav);
   header.appendChild(container);
-  // не забывай, что мы возвращаем header, иначе будешь со своим undefined возиться
+
   return header;
 }
