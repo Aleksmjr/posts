@@ -9,7 +9,7 @@ export function createElement(props) {
 
   props.className && (el.className = props.className);
 
-  props.href && (el.href = props.href);
+  props.href && props.tag === 'a' && (el.href = props.href);
 
   return el;
 }
