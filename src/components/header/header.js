@@ -1,8 +1,8 @@
 import { createElement } from '../../helpers/createElement';
 
 export function createHeader() {
-  const header = createElement({ tag: 'header', class: 'header' });
-  const container = createElement({ tag: 'div', class: 'container' });
+  const header = createElement({ tag: 'header', className: 'header' });
+  const container = createElement({ tag: 'div', className: 'container' });
 
   const navItems = [
     { text: 'Главная', href: '/' },
@@ -11,12 +11,12 @@ export function createHeader() {
     { text: 'Блог', href: '/blog' },
   ];
 
-  const nav = createElement({ tag: 'nav', class: 'header__nav' });
+  const nav = createElement({ tag: 'nav', className: 'header__nav' });
 
   navItems.forEach((item) => {
     const link = createElement({
       tag: 'a',
-      class: 'header__link',
+      className: 'header__link',
       content: item.text,
       href: item.href,
     });

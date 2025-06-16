@@ -7,13 +7,9 @@ export function createElement(props) {
 
   props.content && (el.textContent = props.content);
 
-  if (props.class) {
-    el.className = props.class;
-  }
+  props.className && (el.className = props.className);
 
-  if (props.href) {
-    el.href = props.href;
-  }
+  props.href && (el.href = props.href);
 
   return el;
 }
