@@ -1,5 +1,6 @@
 @use './global/root';
 @use './global/null';
+@use './global/function';
 @use './custom/base';
 @use './custom/colors' as c; // уточнить
 @use './custom/media';
