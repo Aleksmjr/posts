@@ -2,23 +2,6 @@
 @use './global/null';
 @use './global/function';
 @use './custom/base';
-@use './custom/colors' as c; // уточнить
+@use './custom/colors';
 @use './custom/media';
-
-@mixin headings {
-  font-weight: 700;
-  line-height: 1.25;
-  color: c.$darken;
-  @content;
-}
-
-h1 {
-  @include headings {
-    font-size: 40px;
-  }
-}
-
-h2 {
-  font-size: 24px;
-  @include headings;
-}
+@use './custom/typography';
