@@ -1,4 +1,3 @@
-import './footer.css';
 import { createElement } from '../../helpers/createElement';
 
 export function createFooter() {
