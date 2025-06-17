@@ -1,12 +1,13 @@
 @use './global/root';
 @use './global/null';
 @use './custom/base';
+@use './custom/colors' as c; // уточнить
 @use './custom/media';
 
 @mixin headings {
   font-weight: 700;
   line-height: 1.25;
-  color: #9acd32;
+  color: c.$darken;
   @content;
 }
 
