@@ -1,7 +1,13 @@
 import { createElement } from '../helpers/createElement';
+import { createFooter } from '../components/footer/footer';
+import { createHeader } from '../components/header/header';
 
-export function createMainLayout() {
-  const main = createElement({ tag: 'main' });
+export function createMainLayout(container) {
+  container.append(
+    createHeader(),
+    createElement({ tag: 'main' }),
+    createFooter(),
+  );
 
-  return main;
+  return container;
 }
