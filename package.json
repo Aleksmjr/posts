@@ -28,5 +28,8 @@
   "lint-staged": {
     "*.js": "eslint --fix",
     "*.css": "stylelint --fix"
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
   }
 }
