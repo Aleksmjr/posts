@@ -1,7 +1,5 @@
+@use 'sass:math';
 @use './global/root';
 @use './global/null';
-@use './global/function';
-@use './custom/base';
-@use './custom/colors';
-@use './custom/media';
 @use './custom/typography';
+@use './custom/base';
