@@ -1,3 +1,21 @@
 @use './global/root';
 @use './global/null';
 @use './custom/base';
+
+@mixin headings {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #9acd32;
+  @content;
+}
+
+h1 {
+  @include headings {
+    font-size: 40px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  @include headings;
+}
