@@ -1,3 +1,4 @@
+import 'modern-normalize';
 import './styles/style.css';
 import { createMainLayout } from './layouts/mainLayout.js';
 
