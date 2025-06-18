@@ -1,5 +1,21 @@
 @use 'sass:math';
+@use '../custom/colors' as c;
+@use 'sass:map'; // из-за устаревшего синтаксиса
 
 @function pxToRem($px, $base-font-size: 16) {
   @return math.div($px, $base-font-size) * 1rem;
+}
+
+@function getColor($category, $state: null) {
+  @if map.has-key(c.$colors, $category) {
+    $color-map: map.get(c.$colors, $category);
+    @if $state != null and map.has-key($color-map, $state) {
+      @return map.get($color-map, $state);
+    } @else {
+      @return $color-map;
+    }
+  } @else {
+    @warn "Category `#{$category}` does not exist in the $colors map.";
+    @return null;
+  }
 }
