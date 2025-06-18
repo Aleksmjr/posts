@@ -1,3 +1,25 @@
-$primary: #ffffff;
-$secondary: #666666;
-$darken: #0e0e0e;
+$colors: (
+  primary: (
+    static: #000,
+    hover: #333,
+    active: #666,
+  ),
+
+  secondary: (
+    static: #888,
+    hover: #aaa,
+    active: #ccc,
+  ),
+
+  bg: (
+    main: #f5f5f5,
+    light: #ffffff,
+    darken: #dedede,
+  ),
+
+  text: (
+    main: #000000,
+    light: #555555,
+    darken: #333333,
+  ),
+);
