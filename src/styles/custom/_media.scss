@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+$breakpoints: (
+  xs: 340px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1920px,
+);
+
+@mixin bp($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+    $max-width: $value - 1px;
+    @media (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint #{$breakpoint} is not defined in the $breakpoints map.";
+  }
+}

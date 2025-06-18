@@ -1,4 +1,3 @@
-import './header.css';
 import { createElement } from '../../helpers/createElement';
 
 export function createHeader() {
