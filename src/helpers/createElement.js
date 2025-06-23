@@ -11,5 +11,13 @@ export function createElement(props) {
 
   props.href && props.tag === 'a' && (el.href = props.href);
 
+  if (props.attrs) {
+    Object.entries(props.attrs).forEach((item) => {
+      el.setAttribute(item[0], item[1]);
+    });
+  }
+
   return el;
 }
+
+//
