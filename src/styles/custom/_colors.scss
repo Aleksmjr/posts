@@ -1,9 +1,10 @@
 $colors: (
   primary: (
-    static: #3dcc44bb,
-    danger: #d30d0d88,
-    hover: #333,
-    active: #666,
+    static: #4d774e,
+    danger: #d30d0d,
+    hover: #03cc06,
+    active: #bbbbbb,
+    dangerHover: #ff0000,
   ),
 
   secondary: (
@@ -20,7 +21,7 @@ $colors: (
 
   text: (
     main: #000000,
-    light: #555555,
+    light: #ffffff,
     darken: #333333,
   ),
 );
