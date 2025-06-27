@@ -1,0 +1,73 @@
+@use '../../styles/global/function' as fn;
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  width: fit-content;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: fn.getColor(text, light);
+
+  transition: all 0.3s ease-in-out;
+  &_fullWidth {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &_primary {
+    background-color: fn.getColor(primary, static);
+
+    &:hover {
+      color: fn.getColor(text, main);
+      background-color: fn.getColor(primary, hover);
+    }
+  }
+
+  &_secondary {
+    border: 1px solid fn.getColor(primary, active);
+    color: fn.getColor(text, main);
+    background-color: fn.getColor(secondary, static);
+    &:hover {
+      color: fn.getColor(text, light);
+      background-color: fn.getColor(secondary, hover);
+    }
+  }
+
+  &_danger {
+    background-color: fn.getColor(primary, danger);
+    &:hover {
+      color: fn.getColor(text, light);
+      background-color: fn.getColor(primary, dangerHover);
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  &:active {
+    color: fn.getColor(text, darken);
+    background-color: fn.getColor(secondary, active);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0px 2px fn.getColor(secondary, static);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: fn.getColor(text, darken);
+    background-color: fn.getColor(bg, darken);
+  }
+}
