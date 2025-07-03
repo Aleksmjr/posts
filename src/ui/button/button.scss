@@ -6,17 +6,4 @@
   &_fullWidth {
     width: 100%;
   }
-
-  &_primary {
-    background-color: getColor(primary, static);
-  }
-
-  &_secondary {
-    border: 1px solid getColor(primary, static);
-    background-color: getColor(secondary, static);
-  }
-
-  &_danger {
-    background-color: getColor(primary, danger);
-  }
 }
