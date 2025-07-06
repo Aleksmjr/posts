@@ -19,9 +19,6 @@ export class Button {
    * @param {Function|null} [options.onClick=null] - Обработчик события клика.
    */
   constructor(props) {
-    this.icon = props.icon;
-    this.onClick = props.onClick;
-
     this.button = createElement({
       tag: 'button',
       className: clsx(
@@ -34,8 +31,8 @@ export class Button {
       content: props.text,
       attrs: props.attrs,
     });
-    this.setIcon();
-    this.setClick();
+    this.setIcon(props.icon);
+    this.setClick(props.onClick);
   }
 
   checkMod(propsMod) {
@@ -55,8 +52,8 @@ export class Button {
    * Добавляет иконку в кнопку, если указана.
    * @private
    */
-  setIcon() {
-    if (!this.icon) {
+  setIcon(icon) {
+    if (!icon) {
       return;
     }
 
@@ -64,7 +61,7 @@ export class Button {
     this.button.insertAdjacentHTML(
       'beforeend',
       `<svg class="${styles.button__icon}" width="24" height="24">
-         <use href="/src/assets/image/sprite.svg#${this.icon}"></use>
+         <use href="/src/assets/image/sprite.svg#${icon}"></use>
        </svg>`,
     );
   }
@@ -73,9 +70,9 @@ export class Button {
    * Назначает обработчик события клика, если передан.
    * @private
    */
-  setClick() {
-    if (this.onClick) {
-      this.button.addEventListener('click', this.onClick);
+  setClick(onClick) {
+    if (!onClick) {
+      this.button.addEventListener('click', onClick);
     }
   }
 }
