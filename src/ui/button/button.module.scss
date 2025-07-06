@@ -17,6 +17,11 @@
   color: fn.getColor(text, whiten);
 
   transition: all 0.3s ease-in-out;
+
+  &_reverse {
+    flex-direction: row-reverse;
+  }
+
   &_fullWidth {
     justify-content: space-between;
     width: 100%;

@@ -27,6 +27,7 @@ export class Button {
       className: clsx(
         styles.button,
         this.checkMod(props.mod),
+        props.reverse ? styles.button_reverse : null,
         props.wide ? styles.button_fullWidth : null,
         props.className ?? null,
       ),

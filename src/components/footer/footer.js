@@ -19,6 +19,7 @@ export function createFooter() {
   const btn = new Button({
     text: 'Загрузить еще',
     attrs: { type: 'button' },
+    reverse: true,
     className: 'footer__button',
     icon: 'check',
     onClick: () => {
