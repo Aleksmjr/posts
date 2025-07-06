@@ -20,7 +20,7 @@ export function createFooter() {
     text: 'Загрузить еще',
     attrs: { type: 'button' },
     className: 'footer__button',
-    icon: 'icon-check',
+    icon: 'check',
     onClick: () => {
       console.log('Я - стандартная кнопка');
     },
@@ -30,7 +30,7 @@ export function createFooter() {
     attrs: { type: 'button' },
     className: 'footer__button',
     mod: 'secondary',
-    icon: 'icon-check',
+    icon: 'check',
     onClick: () => {
       console.log('Я - кнопка secondary');
     },
@@ -40,7 +40,7 @@ export function createFooter() {
     attrs: { type: 'button' },
     className: 'footer__button',
     mod: 'danger',
-    icon: 'icon-check',
+    icon: 'check',
     onClick: () => {
       console.log('Я - кнопка danger');
     },
@@ -49,7 +49,7 @@ export function createFooter() {
     text: 'Длинющая кнопенция',
     attrs: { type: 'button' },
     className: 'footer__button',
-    icon: 'icon-check',
+    icon: 'check',
     wide: 'true',
     onClick: () => {
       console.log('А я - кнопка на всю ширину');
@@ -59,7 +59,7 @@ export function createFooter() {
     text: 'А меня ты не нажмешь',
     attrs: { type: 'button', disabled: '' },
     className: 'footer__button',
-    icon: 'icon-check',
+    icon: 'check',
     onClick: () => {
       console.log('click - тут потом будет событие');
     },
