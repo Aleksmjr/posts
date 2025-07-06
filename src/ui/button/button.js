@@ -12,7 +12,6 @@ export class Button {
    * Создаёт экземпляр кнопки.
    * @param {Object} options - Параметры кнопки.
    * @param {'primary' | 'secondary' | danger} [options.mod = 'primary'] - Модификатор кнопки.
-   * @param {string} [options.text='Оставить заявку'] - Текст кнопки.
    * @param {string} [options.className=''] - Классы CSS для кнопки.
    * @param {boolean} [options.wide=false] - true если кнопка на всю ширину родителя.
    * @param {Object} [options.attrs={}] - HTML-атрибуты кнопки.
@@ -23,18 +22,17 @@ export class Button {
     this.icon = props.icon;
     this.onClick = props.onClick;
 
-    (props.text = props.text ? props.text : 'Оставь заявку'),
-      (this.button = createElement({
-        tag: 'button',
-        className: clsx(
-          styles.button,
-          this.checkMod(props.mod),
-          props.wide ? styles.button_fullWidth : null,
-          props.className ?? null,
-        ),
-        content: props.text,
-        attrs: props.attrs,
-      }));
+    this.button = createElement({
+      tag: 'button',
+      className: clsx(
+        styles.button,
+        this.checkMod(props.mod),
+        props.wide ? styles.button_fullWidth : null,
+        props.className ?? null,
+      ),
+      content: props.text,
+      attrs: props.attrs,
+    });
     this.setIcon();
     this.setClick();
   }
