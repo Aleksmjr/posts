@@ -29,15 +29,21 @@
 
   &_primary {
     background-color: fn.getColor(primary, static);
-    &:hover {
-      background-color: fn.getColor(primary, hover);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: fn.getColor(primary, hover);
+      }
     }
   }
 
   &_secondary {
     background-color: fn.getColor(secondary, static);
-    &:hover {
-      background-color: fn.getColor(secondary, hover);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: fn.getColor(secondary, hover);
+      }
     }
   }
 
@@ -45,9 +51,12 @@
     border: 1px solid fn.getColor(primary, static);
     color: fn.getColor(primary, static);
     background-color: fn.getColor(primary, danger);
-    &:hover {
-      color: fn.getColor(primary, hover);
-      background-color: fn.getColor(primary, dangerHover);
+
+    @media (hover: hover) {
+      &:hover {
+        color: fn.getColor(primary, hover);
+        background-color: fn.getColor(primary, dangerHover);
+      }
     }
   }
 
