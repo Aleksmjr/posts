@@ -20,7 +20,7 @@ export class Button {
    */
   constructor(props) {
     this.button = createElement({
-      tag: 'button',
+      tag: props.href ? 'a' : 'button',
       className: clsx(
         styles.button,
         this.checkMod(props.mod),
@@ -28,8 +28,12 @@ export class Button {
         props.wide ? styles.button_fullWidth : null,
         props.className ?? null,
       ),
-      content: props.text,
-      attrs: props.attrs,
+      content: props.text ?? null,
+      attrs: {
+        ...props.attrs,
+        ...(props.href ? { href: props.href } : {}),
+        type: props.href ? null : 'button',
+      },
     });
     this.setIcon(props.icon);
     this.setClick(props.onClick);
@@ -71,7 +75,7 @@ export class Button {
    * @private
    */
   setClick(onClick) {
-    if (!onClick) {
+    if (onClick) {
       this.button.addEventListener('click', onClick);
     }
   }
