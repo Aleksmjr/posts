@@ -40,6 +40,7 @@ export class Button {
         type: props.href ? null : 'button',
       },
     });
+
     this.setIcon(props.icon);
     this.setClick(props.onClick);
   }
