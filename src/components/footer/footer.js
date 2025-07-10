@@ -26,6 +26,7 @@ export function createFooter() {
       console.log('Я - стандартная кнопка');
     },
   });
+
   const btn2 = new Button({
     text: 'Продолжить',
     attrs: { type: 'button' },
@@ -36,6 +37,7 @@ export function createFooter() {
       console.log('Я - кнопка secondary');
     },
   });
+
   const btn3 = new Button({
     text: 'Опасная кнопка',
     attrs: { type: 'button' },
@@ -46,6 +48,7 @@ export function createFooter() {
       console.log('Я - кнопка danger');
     },
   });
+
   const btn4 = new Button({
     text: 'Длинющая кнопенция',
     attrs: { type: 'button' },
@@ -56,6 +59,7 @@ export function createFooter() {
       console.log('А я - кнопка на всю ширину');
     },
   });
+
   const btn5 = new Button({
     text: 'А меня ты не нажмешь',
     attrs: { type: 'button', disabled: '' },
@@ -65,6 +69,7 @@ export function createFooter() {
       console.log('click - тут потом будет событие');
     },
   });
+
   container.appendChild(text);
   container.appendChild(btn.button);
   container.appendChild(btn2.button);
