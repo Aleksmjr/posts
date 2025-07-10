@@ -60,11 +60,6 @@
     }
   }
 
-  &__icon {
-    width: 24px;
-    height: 24px;
-  }
-
   &:focus {
     outline: none;
     box-shadow: 0 0 0px 2px fn.getColor(secondary, static);

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { createElement } from '../../helpers/createElement.js';
 import styles from './button.module.scss';
+import { Icon } from '../icon/icon.js';
 /**
  * Класс для создания настраиваемой кнопки.
  */
@@ -57,19 +58,14 @@ export class Button {
       return;
     }
 
-    //  insertAdjacentHTML
-    this.button.insertAdjacentHTML(
-      'beforeend',
-      `<svg class="${styles.button__icon}" width="24" height="24">
-         <use href="/src/assets/image/sprite.svg#${icon}"></use>
-       </svg>`,
-    );
+    // Создаём экземпляр Icon и добавляем его в кнопку
+    const iconComponent = new Icon({
+      name: icon,
+      className: styles.button__icon,
+    });
+    this.button.append(iconComponent.getElement());
   }
 
-  /**
-   * Назначает обработчик события клика, если передан.
-   * @private
-   */
   setClick(onClick) {
     if (onClick) {
       this.button.addEventListener('click', onClick);
