@@ -1,9 +1,0 @@
-@use '../global/function' as fn;
-
-.button {
-  width: fit-content;
-
-  &_fullWidth {
-    width: 100%;
-  }
-}
