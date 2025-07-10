@@ -11,14 +11,18 @@ import { Icon } from '../icon/icon.js';
 export class Button {
   /**
    * Создаёт экземпляр кнопки.
-   * @param {Object} options - Параметры кнопки.
-   * @param {'primary' | 'secondary' | danger} [options.mod = 'primary'] - Модификатор кнопки.
-   * @param {string} [options.className=''] - Классы CSS для кнопки.
-   * @param {boolean} [options.wide=false] - true если кнопка на всю ширину родителя.
-   * @param {Object} [options.attrs={}] - HTML-атрибуты кнопки.
-   * @param {string|null} [options.icon=null] - Путь к иконке, которая добавляется в кнопку.
-   * @param {Function|null} [options.onClick=null] - Обработчик события клика.
+   * @param {Object} props - Параметры кнопки.
+   * @param {'primary'|'secondary'|'danger'} [props.mod='primary'] - Вариант оформления кнопки.
+   * @param {string} [props.className=''] - Дополнительный CSS-класс для кнопки.
+   * @param {boolean} [props.wide=false] - Если true, кнопка растягивается на всю ширину контейнера.
+   * @param {boolean} [props.reverse=false] - Если true, порядок элементов внутри кнопки меняется на обратный.
+   * @param {Object} [props.attrs={}] - Дополнительные HTML-атрибуты для кнопки.
+   * @param {string|null} [props.icon=null] - Имя SVG-иконки для отображения (id символа в спрайте).
+   * @param {string} [props.text=''] - Текст кнопки.
+   * @param {string|null} [props.href=null] - Если указан URL, создаётся элемент <a> вместо <button>.
+   * @param {Function|null} [props.onClick=null] - Функция-обработчик события click.
    */
+
   constructor(props) {
     this.button = createElement({
       tag: props.href ? 'a' : 'button',
