@@ -52,10 +52,6 @@ export class Button {
     }
   }
 
-  /**
-   * Добавляет иконку в кнопку, если указана.
-   * @private
-   */
   setIcon(icon) {
     if (!icon) {
       return;
