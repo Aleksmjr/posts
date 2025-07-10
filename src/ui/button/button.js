@@ -28,7 +28,7 @@ export class Button {
         props.wide ? styles.button_fullWidth : null,
         props.className ?? null,
       ),
-      content: props.text ?? null,
+      content: props.text?.trim() ? props.text : null,
       attrs: {
         ...props.attrs,
         ...(props.href ? { href: props.href } : {}),
