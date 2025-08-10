@@ -53,6 +53,8 @@ export class Button {
         return styles.button_secondary;
       case 'danger':
         return styles.button_danger;
+      case 'header':
+        return styles.button_header;
       default:
         return styles.button_primary;
     }

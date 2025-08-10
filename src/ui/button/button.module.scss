@@ -58,11 +58,10 @@
         background-color: fn.getColor(primary, dangerHover);
       }
     }
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0px 2px fn.getColor(secondary, static);
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0px 2px fn.getColor(secondary, static);
+    }
   }
 
   &:active {
@@ -75,5 +74,32 @@
     border: 1px solid fn.getColor(text, main);
     color: fn.getColor(text, light);
     background-color: fn.getColor(primary, danger);
+  }
+
+  &_header {
+    padding: 4px 20px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    color: fn.getColor(text, main);
+
+    transition: border-color 0.3s ease, background-color 0.3s ease,
+      color 0.3s ease;
+    @media (hover: hover) {
+      &:hover {
+        color: fn.getColor(text, greenlight);
+      }
+    }
+
+    &:active {
+      border: 1px solid fn.getColor(bg, darken);
+      background-color: fn.getColor(text, whiten);
+    }
+
+    &:focus {
+      border: 1px solid #dedede;
+      color: fn.getColor(text, greenlight);
+      background: #ffffff;
+    }
   }
 }

@@ -70,12 +70,23 @@ export function createFooter() {
     },
   });
 
+  const btn6 = new Button({
+    text: 'About',
+    className: 'header__button',
+    mod: 'header',
+    href: '#',
+    onClick: () => {
+      console.log('Я - кнопка шапки');
+    },
+  });
+
   container.appendChild(text);
   container.appendChild(btn.button);
   container.appendChild(btn2.button);
   container.appendChild(btn3.button);
   container.appendChild(btn4.button);
   container.appendChild(btn5.button);
+  container.appendChild(btn6.button);
 
   footer.appendChild(container);
   return footer;
