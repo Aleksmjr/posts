@@ -7,9 +7,17 @@ export function createElement(props) {
 
   props.content && (el.textContent = props.content);
 
-  props.className && el.classList.add(props.className);
+  props.className && (el.className = props.className);
 
   props.href && props.tag === 'a' && (el.href = props.href);
 
+  if (props.attrs) {
+    Object.entries(props.attrs).forEach((item) => {
+      el.setAttribute(item[0], item[1]);
+    });
+  }
+
   return el;
 }
+
+//

@@ -1,0 +1,105 @@
+@use '../../styles/global/function' as fn;
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  width: fit-content;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+
+  font-size: 18px;
+  font-weight: 400;
+  color: fn.getColor(text, whiten);
+
+  transition: all 0.3s ease-in-out;
+
+  &_reverse {
+    flex-direction: row-reverse;
+  }
+
+  &_fullWidth {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &_primary {
+    background-color: fn.getColor(primary, static);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: fn.getColor(primary, hover);
+      }
+    }
+  }
+
+  &_secondary {
+    background-color: fn.getColor(secondary, static);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: fn.getColor(secondary, hover);
+      }
+    }
+  }
+
+  &_danger {
+    border: 1px solid fn.getColor(primary, static);
+    color: fn.getColor(primary, static);
+    background-color: fn.getColor(primary, danger);
+
+    @media (hover: hover) {
+      &:hover {
+        color: fn.getColor(primary, hover);
+        background-color: fn.getColor(primary, dangerHover);
+      }
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0px 2px fn.getColor(secondary, static);
+    }
+  }
+
+  &:active {
+    color: fn.getColor(text, light);
+    background-color: fn.getColor(secondary, active);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    border: 1px solid fn.getColor(text, main);
+    color: fn.getColor(text, light);
+    background-color: fn.getColor(primary, danger);
+  }
+
+  &_header {
+    padding: 4px 20px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    color: fn.getColor(text, main);
+
+    transition: border-color 0.3s ease, background-color 0.3s ease,
+      color 0.3s ease;
+    @media (hover: hover) {
+      &:hover {
+        color: fn.getColor(text, greenlight);
+      }
+    }
+
+    &:active {
+      border: 1px solid fn.getColor(bg, darken);
+      background-color: fn.getColor(text, whiten);
+    }
+
+    &:focus {
+      border: 1px solid #dedede;
+      color: fn.getColor(text, greenlight);
+      background: #ffffff;
+    }
+  }
+}
