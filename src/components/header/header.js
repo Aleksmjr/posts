@@ -19,9 +19,13 @@ export function createHeader() {
   const nav = createElement({ tag: 'nav', className: styles.header__nav });
 
   [
-    { href: '/', text: 'About' },
-    { href: '/contacts', text: 'Contacts' },
-    { href: '/posts', text: 'Posts' },
+    { href: '/', text: 'About', attrs: { id: 'header-about-page' } },
+    {
+      href: '/contacts',
+      text: 'Contacts',
+      attrs: { id: 'header-contacts-page' },
+    },
+    { href: '/posts', text: 'Posts', attrs: { id: 'header-posts-page' } },
   ]
     .map(
       (item) =>
