@@ -43,6 +43,8 @@ export class Button {
 
     this.setIcon(props.icon);
     this.setClick(props.onClick);
+
+    return this.button;
   }
 
   checkMod(propsMod) {
