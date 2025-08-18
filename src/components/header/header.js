@@ -14,24 +14,25 @@ export function createHeader() {
     tag: 'a',
     className: styles.header__logo,
     href: '/',
+    attrs: { 'data-router-link': '' },
   });
 
   const nav = createElement({ tag: 'nav', className: styles.header__nav });
 
   [
-    { href: '/', text: 'About', attrs: { id: 'header-about-page' } },
+    { href: '/', text: 'About', attrs: { 'data-router-link': '' } },
     {
       href: '/contacts',
       text: 'Contacts',
-      attrs: { id: 'header-contacts-page' },
+      attrs: { 'data-router-link': '' },
     },
-    { href: '/posts', text: 'Posts', attrs: { id: 'header-posts-page' } },
+    { href: '/posts', text: 'Posts', attrs: { 'data-router-link': '' } },
   ]
     .map(
       (item) =>
         new Button({
           ...item,
-          classNames: styles.header__link,
+          className: styles.header__link,
           mod: 'header',
         }),
     )
@@ -42,9 +43,6 @@ export function createHeader() {
     className: 'header__sign',
     mod: 'header',
     href: '#',
-    onClick: () => {
-      console.log('я буду переходить в личный кабинет');
-    },
   });
   container.appendChild(logo);
   container.appendChild(nav);
