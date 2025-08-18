@@ -36,8 +36,7 @@ export class Button {
       content: props.text?.trim() ? props.text : null,
       attrs: {
         ...props.attrs,
-        ...(props.href ? { href: props.href } : {}),
-        type: props.href ? null : 'button',
+        ...(props.href ? { href: props.href } : { type: 'button' }),
       },
     });
 
