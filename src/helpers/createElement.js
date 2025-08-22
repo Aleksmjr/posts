@@ -19,5 +19,3 @@ export function createElement(props) {
 
   return el;
 }
-
-//

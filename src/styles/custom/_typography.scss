@@ -42,7 +42,7 @@ h3,
 
 a {
   font-family: 'Roboto', sans-serif;
-  font-size: clamp(1rem, 0.923rem + 0.364vw, 1.25rem);
+  font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
   font-weight: 400;
   color: fn.getColor(text, main);
 }
