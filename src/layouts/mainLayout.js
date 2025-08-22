@@ -5,7 +5,6 @@ export function createMainLayout(container) {
   container.append(
     createHeader(),
     createElement({ tag: 'main', attrs: { id: 'page-content' } }),
-
     createFooter(),
   );
 
