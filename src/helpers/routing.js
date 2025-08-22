@@ -25,17 +25,15 @@ export class Routes {
 
     this.addEventListeners();
   }
-  // сделать так, чтобы routes зараборали в кликах!!
-  addEventListeners() {
-    this.headerLinks.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.clearRoot();
-        this.currentRoute = e.target.getAttribute('href');
 
-        this.handleRouteChange();
-        this.setUrl();
-      });
+  addEventListeners() {
+    document.body.addEventListener('click', (e) => {
+      const link = e.target.closest('[data-router-link]');
+      if (link) {
+        e.preventDefault();
+        this.currentRoute = link.getAttribute('href');
+        this.navigate();
+      }
     });
 
     window.addEventListener('load', () => {
@@ -44,9 +42,13 @@ export class Routes {
 
     window.addEventListener('popstate', () => {
       this.handleUrl();
-      this.clearRoot();
-      this.handleRouteChange();
     });
+  }
+
+  navigate() {
+    this.clearRoot();
+    this.handleRouteChange();
+    this.setUrl();
   }
 
   handleRouteChange() {
