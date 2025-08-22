@@ -36,8 +36,7 @@ export class Button {
       content: props.text?.trim() ? props.text : null,
       attrs: {
         ...props.attrs,
-        ...(props.href ? { href: props.href } : {}),
-        type: props.href ? null : 'button',
+        ...(props.href ? { href: props.href } : { type: 'button' }),
       },
     });
 
@@ -48,18 +47,7 @@ export class Button {
   }
 
   checkMod(propsMod) {
-    switch (propsMod) {
-      case 'primary':
-        return styles.button_primary;
-      case 'secondary':
-        return styles.button_secondary;
-      case 'danger':
-        return styles.button_danger;
-      case 'header':
-        return styles.button_header;
-      default:
-        return styles.button_primary;
-    }
+    return propsMod ? styles[`button_${propsMod}`] : styles.button_primary;
   }
 
   setIcon(icon) {
@@ -68,11 +56,11 @@ export class Button {
     }
 
     // Создаём экземпляр Icon и добавляем его в кнопку
-    const iconComponent = new Icon({
+    const iconInstance = new Icon({
       name: icon,
       className: styles.button__icon,
     });
-    this.button.append(iconComponent.getElement());
+    this.button.append(iconInstance.getElement());
   }
 
   setClick(onClick) {
