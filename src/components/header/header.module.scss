@@ -2,12 +2,8 @@
 @use '../../styles/custom/media' as bp;
 
 .header {
-  position: fixed;
-  top: 20px;
-  right: 0;
-  left: 0;
-
   width: 100%;
+  padding: 16px;
 
   &__container {
     display: flex;
