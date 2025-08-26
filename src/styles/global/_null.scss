@@ -1,5 +1,12 @@
+@use '../../styles/global/function' as fn;
+@use '../custom/media' as bp;
+
 html {
   box-sizing: border-box;
+}
+
+body {
+  background-color: fn.getColor(bg, body);
 }
 
 div#root {
@@ -10,6 +17,15 @@ div#root {
 
 main#page-content {
   flex: 1;
+  padding-top: 120px;
+
+  @include bp.bp(lg) {
+    padding-top: 80px;
+  }
+
+  @include bp.bp(md) {
+    padding-top: 40px;
+  }
 }
 
 *,

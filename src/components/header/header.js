@@ -39,7 +39,7 @@ export function createHeader() {
 
   const signUser = new Button({
     text: 'Sign',
-    className: 'header__sign',
+    className: styles.header__sign,
     mod: 'header',
     href: '#',
   });
