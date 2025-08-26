@@ -32,6 +32,7 @@
     "*.css": "stylelint --fix"
   },
   "dependencies": {
+    "axios": "^1.11.0",
     "modern-normalize": "^3.0.1"
   }
 }
