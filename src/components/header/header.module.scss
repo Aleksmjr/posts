@@ -24,6 +24,12 @@
     gap: 4px;
     border-radius: 20px;
     background-color: fn.getColor(bg, bgPurple);
+
+    & [data-router-link-active] {
+      border: 1px solid #dedede;
+      color: fn.getColor(text, greenlight);
+      background: #ffffff;
+    }
   }
 
   &__logo {

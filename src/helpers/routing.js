@@ -4,9 +4,9 @@ import { createAboutPage } from '../pages/about';
 export class Routes {
   root = document.getElementById('page-content');
   routes = {
-    '/': () => createAboutPage(this.root),
-    '/contacts': () => createContactsPage(this.root),
-    '/posts': () => createPostsPage(this.root),
+    '/': createAboutPage,
+    '/contacts': createContactsPage,
+    '/posts': createPostsPage,
   };
   constructor() {
     this.init();
@@ -22,14 +22,15 @@ export class Routes {
 
   init() {
     this.getElements();
-
     this.addEventListeners();
+    this.setActiveMenuLink();
   }
 
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
       const link = e.target.closest('[data-router-link]');
       if (link) {
+        console.log('это что то новое');
         e.preventDefault();
         this.currentRoute = link.getAttribute('href');
         this.navigate();
@@ -49,17 +50,19 @@ export class Routes {
     this.clearRoot();
     this.handleRouteChange();
     this.setUrl();
+    this.setActiveMenuLink();
   }
 
   handleRouteChange() {
     if (this.routes[this.currentRoute]) {
       this.routes[this.currentRoute]();
     } else {
-      this.routes['/'](); // Default route
+      this.routes['/about'](); // Default route
     }
   }
 
   handleUrl() {
+    console.log(window.location.pathname);
     this.currentRoute = window.location.pathname;
     this.clearRoot();
     this.handleRouteChange();
@@ -67,6 +70,17 @@ export class Routes {
 
   setUrl() {
     window.history.pushState({}, '', this.currentRoute);
-    this.handleUrl();
+  }
+
+  setActiveMenuLink() {
+    if (document.querySelector('[data-router-link-active]')) {
+      document
+        .querySelector('[data-router-link-active]')
+        .removeAttribute('data-router-link-active');
+    }
+
+    document
+      .querySelector(`a[href="${window.location.pathname}"]`)
+      .setAttribute('data-router-link-active', '');
   }
 }

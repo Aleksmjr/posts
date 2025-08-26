@@ -8,13 +8,13 @@ export function createHeader() {
   const header = createElement({ tag: 'header', className: styles.header });
   const container = createElement({
     tag: 'div',
-    className: clsx(styles.header__container, 'container'),
+    className: clsx('container', styles.header__container),
   });
 
   const logo = createElement({
     tag: 'a',
     className: styles.header__logo,
-    href: '/',
+    href: '/about',
     attrs: { 'data-router-link': '' },
   });
 
