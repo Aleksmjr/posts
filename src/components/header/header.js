@@ -14,7 +14,7 @@ export function createHeader() {
   const logo = createElement({
     tag: 'a',
     className: styles.header__logo,
-    href: '/about',
+    href: '/',
     attrs: { 'data-router-link': '' },
   });
 
