@@ -21,7 +21,7 @@ export function createHeader() {
   const nav = createElement({ tag: 'nav', className: styles.header__nav });
 
   [
-    { href: '/', text: 'About', attrs: { 'data-router-link': '' } },
+    { href: '/about', text: 'About', attrs: { 'data-router-link': '' } },
     {
       href: '/contacts',
       text: 'Contacts',
