@@ -30,7 +30,6 @@ export class Routes {
     document.body.addEventListener('click', (e) => {
       const link = e.target.closest('[data-router-link]');
       if (link) {
-        console.log('это что то новое');
         e.preventDefault();
         this.currentRoute = link.getAttribute('href');
         this.navigate();
@@ -57,12 +56,11 @@ export class Routes {
     if (this.routes[this.currentRoute]) {
       this.routes[this.currentRoute]();
     } else {
-      this.routes['/about'](); // Default route
+      this.routes['/'](); // Default route
     }
   }
 
   handleUrl() {
-    console.log(window.location.pathname);
     this.currentRoute = window.location.pathname;
     this.clearRoot();
     this.handleRouteChange();
