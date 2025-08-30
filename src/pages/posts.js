@@ -3,10 +3,10 @@
 import { createElement } from '../helpers/createElement';
 import { appendFabric } from '../helpers/appendFabric';
 import clsx from 'clsx';
-import styles from '../components/posts/posts.module.scss';
-
-import Posts from '../components/posts/CreatePosts';
-export function createPostsPage() {
+import styles from '../components/posts/postList/posts.module.scss';
+import { createButtonLoadingMorePosts } from '../components/posts/postLoadingButton/postLoadingButton';
+import PostList from '../components/posts/postList/PostList';
+export async function createPostsPage() {
   const root = document.getElementById('page-content');
   root.innerHTML = '';
   const section = createElement({ tag: 'section', className: 'posts' });
@@ -15,11 +15,14 @@ export function createPostsPage() {
     className: clsx('container', styles.posts__container),
   });
   const title = createElement({ tag: 'h2', content: 'Posts' });
-
-  new Posts(container);
+  const newPostLists = new PostList(container);
+  // не забыть сделать так, чтобы дожидалось выполнения PostList а потом только Mount / (сейчас наоборот)
   appendFabric([
     [section, container],
     [container, title],
     [root, section],
   ]);
+  await newPostLists.init();
+  await newPostLists.mount();
+  createButtonLoadingMorePosts(container, newPostLists);
 }
