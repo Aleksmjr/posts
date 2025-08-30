@@ -1,0 +1,14 @@
+@use '../../../styles/global/function' as fn;
+@use '../../../styles/custom/media' as bp;
+
+.posts {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    @include bp.bp(lg) {
+      gap: 40px;
+    }
+  }
+}
