@@ -1,7 +1,7 @@
 import { createPostsPage } from '../pages/posts';
 import { createContactsPage } from '../pages/contacts';
 import { createAboutPage } from '../pages/about';
-export class Routes {
+export class Router {
   root = document.getElementById('page-content');
   routes = {
     '/': createAboutPage,
@@ -29,8 +29,14 @@ export class Routes {
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
       const link = e.target.closest('[data-router-link]');
+
+      e.preventDefault();
+
+      if (link.getAttribute('href') === this.currentRoute) {
+        return;
+      }
+
       if (link) {
-        e.preventDefault();
         this.currentRoute = link.getAttribute('href');
         this.navigate();
       }
