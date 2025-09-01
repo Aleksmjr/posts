@@ -16,7 +16,7 @@ export async function createPostsPage() {
   });
   const title = createElement({ tag: 'h2', content: 'Posts' });
   const newPostLists = new PostList(container);
-  // не забыть сделать так, чтобы дожидалось выполнения PostList а потом только Mount / (сейчас наоборот)
+
   appendFabric([
     [section, container],
     [container, title],
