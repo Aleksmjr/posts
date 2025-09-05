@@ -1,7 +1,6 @@
 import { Button } from '../../../ui/button/button';
 import styles from '../postLoadingButton/postLoadingButton.module.scss';
 
-// теперь функция принимает сам список постов
 export function createButtonLoadingMorePosts(container, postList) {
   const loadMoreBtn = new Button({
     text: 'Load more...',

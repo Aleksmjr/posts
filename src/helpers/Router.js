@@ -32,7 +32,7 @@ export class Router {
 
       e.preventDefault();
 
-      if (link.getAttribute('href') === this.currentRoute) {
+      if (link?.getAttribute('href') === this.currentRoute) {
         return;
       }
 
