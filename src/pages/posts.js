@@ -2,7 +2,6 @@ import { createElement } from '../helpers/createElement';
 import { appendFabric } from '../helpers/appendFabric';
 import clsx from 'clsx';
 import styles from '../components/posts/postList/posts.module.scss';
-import { createButtonLoadingMorePosts } from '../components/posts/postLoadingButton/postLoadingButton';
 import PostList from '../components/posts/postList/PostList';
 
 export async function createPostsPage() {
@@ -22,7 +21,6 @@ export class PostPage {
     this.newPostLists = new PostList(this.container);
     await this.newPostLists.init();
     await this.newPostLists.mount();
-    createButtonLoadingMorePosts(this.container, this.newPostLists);
   }
 
   createSectionLayout() {

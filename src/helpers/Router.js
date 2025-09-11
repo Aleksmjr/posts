@@ -28,9 +28,9 @@ export class Router {
 
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
-      const link = e.target.closest('[data-router-link]');
-
       e.preventDefault();
+
+      const link = e.target.closest('[data-router-link]');
 
       if (link?.getAttribute('href') === this.currentRoute) {
         return;

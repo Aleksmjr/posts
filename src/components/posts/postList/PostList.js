@@ -1,7 +1,9 @@
 import { getPosts } from '../../../api/postsService';
 import { createElement } from '../../../helpers';
 import { createPostCard } from '../postItem/postItem';
+import { Button } from '../../../ui/button/button';
 import styles from './posts.module.scss';
+import buttonStyles from '../postLoadingButton/postLoadingButton.module.scss';
 
 export default class PostList {
   postsData = [];
@@ -10,9 +12,22 @@ export default class PostList {
 
   constructor(container) {
     this.container = container;
+
     this.postWrapper = createElement({
       tag: 'div',
       className: styles.posts__wrapper,
+    });
+
+    this.loadMoreBtn = new Button({
+      text: 'Load more...',
+      className: buttonStyles.posts__loading,
+      mod: 'secondary',
+    });
+
+    this.loadMoreBtn.addEventListener('click', async () => {
+      this.currentPage += 1;
+      const newPosts = await this.getPostsData();
+      await this.createPostsList(newPosts);
     });
   }
 
@@ -21,12 +36,12 @@ export default class PostList {
       limit: this.pageSize,
       page: this.currentPage,
     });
-    const enhancedPosts = this.createPhotoInPost(newPosts);
+    const enhancedPosts = this.addPhotosToPosts(newPosts);
     this.postsData = [...this.postsData, ...enhancedPosts];
     return enhancedPosts;
   }
 
-  createPhotoInPost(posts) {
+  addPhotosToPosts(posts) {
     return posts.map((post) => ({
       ...post,
       photo: `https://picsum.photos/400?random=${post.id}`,
@@ -41,6 +56,7 @@ export default class PostList {
 
   async mount() {
     this.container.appendChild(this.postWrapper);
+    this.container.appendChild(this.loadMoreBtn);
   }
 
   async init() {
