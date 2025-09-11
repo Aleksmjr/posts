@@ -3,6 +3,7 @@ import { appendFabric } from '../helpers/appendFabric';
 import clsx from 'clsx';
 import styles from '../components/posts/postList/posts.module.scss';
 import PostList from '../components/posts/postList/PostList';
+import { clearElement } from '../helpers/clearElement';
 
 export async function createPostsPage() {
   new PostPage();
@@ -32,10 +33,6 @@ export class PostPage {
     });
   }
 
-  clearRoot() {
-    this.root.innerHTML = '';
-  }
-
   appendElements() {
     appendFabric([
       [this.section, this.container],
@@ -45,7 +42,7 @@ export class PostPage {
   }
 
   async initPosts() {
-    this.clearRoot();
+    clearElement(this.root);
     this.createSectionLayout();
     this.appendElements();
     this.renderPostsWithButtonLoadMore();

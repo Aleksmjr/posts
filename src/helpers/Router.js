@@ -1,6 +1,8 @@
 import { createPostsPage } from '../pages/posts';
 import { createContactsPage } from '../pages/contacts';
 import { createAboutPage } from '../pages/about';
+import { clearElement } from './clearElement';
+
 export class Router {
   root = document.getElementById('page-content');
   routes = {
@@ -10,10 +12,6 @@ export class Router {
   };
   constructor() {
     this.init();
-  }
-
-  clearRoot() {
-    this.root.innerHTML = '';
   }
 
   getElements() {
@@ -52,7 +50,7 @@ export class Router {
   }
 
   navigate() {
-    this.clearRoot();
+    clearElement(this.root);
     this.handleRouteChange();
     this.setUrl();
     this.setActiveMenuLink();
@@ -68,7 +66,7 @@ export class Router {
 
   handleUrl() {
     this.currentRoute = window.location.pathname;
-    this.clearRoot();
+    clearElement(this.root);
     this.handleRouteChange();
   }
 
