@@ -10,6 +10,7 @@ export class Router {
     '/contacts': createContactsPage,
     '/posts': createPostsPage,
   };
+
   constructor() {
     this.init();
   }
@@ -27,26 +28,33 @@ export class Router {
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
       e.preventDefault();
-
       const link = e.target.closest('[data-router-link]');
-
-      if (link?.getAttribute('href') === this.currentRoute) {
+      if (!link || link.getAttribute('href') === this.currentRoute) {
         return;
       }
 
-      if (link) {
-        this.currentRoute = link.getAttribute('href');
-        this.navigate();
-      }
+      this.currentRoute = link.getAttribute('href');
+      this.navigate();
     });
 
-    window.addEventListener('load', () => {
-      this.handleUrl();
-    });
+    window.addEventListener('load', () => this.handleUrl());
+    window.addEventListener('popstate', () => this.handleUrl());
+  }
 
-    window.addEventListener('popstate', () => {
-      this.handleUrl();
-    });
+  setActiveMenuLink() {
+    const ACTIVE_ATTR = 'data-router-link-active';
+
+    const prevActive = document.querySelector(`[${ACTIVE_ATTR}]`);
+    if (prevActive) {
+      prevActive.removeAttribute(ACTIVE_ATTR);
+    }
+
+    const currentLink = document.querySelector(
+      `a[href="${window.location.pathname}"]`,
+    );
+    if (currentLink) {
+      currentLink.setAttribute(ACTIVE_ATTR, '');
+    }
   }
 
   navigate() {
@@ -72,17 +80,5 @@ export class Router {
 
   setUrl() {
     window.history.pushState({}, '', this.currentRoute);
-  }
-
-  setActiveMenuLink() {
-    if (document.querySelector('[data-router-link-active]')) {
-      document
-        .querySelector('[data-router-link-active]')
-        .removeAttribute('data-router-link-active');
-    }
-
-    document
-      .querySelector(`a[href="${window.location.pathname}"]`)
-      .setAttribute('data-router-link-active', '');
   }
 }
