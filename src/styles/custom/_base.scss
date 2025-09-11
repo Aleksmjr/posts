@@ -1,4 +1,5 @@
 @use './media' as bpUtil;
+@use '../../styles/global/function' as fn;
 
 .container {
   max-width: 1440px;
@@ -8,6 +9,29 @@
   @include bpUtil.bp(md) {
     max-width: 100%;
     padding: 0 8px;
+  }
+}
+
+body {
+  background-color: fn.getColor(bg, body);
+}
+
+div#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main#page-content {
+  flex: 1;
+  padding-top: 120px;
+
+  @include bpUtil.bp(lg) {
+    padding-top: 80px;
+  }
+
+  @include bpUtil.bp(md) {
+    padding-top: 40px;
   }
 }
 
