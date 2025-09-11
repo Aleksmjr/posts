@@ -1,10 +1,10 @@
 import { apiRequest } from './api';
 
 export async function getPosts({ limit = 5, page = 1 } = {}) {
-  const allPosts = await apiRequest('posts');
-  const start = (page - 1) * limit;
-  const end = start + limit;
-  const posts = allPosts.slice(start, end);
+  const posts = await apiRequest('posts', {
+    _limit: limit,
+    _page: page,
+  });
 
   return posts.map((post) => ({
     ...post,
