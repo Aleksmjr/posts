@@ -21,9 +21,16 @@ export default class PostList {
       limit: this.pageSize,
       page: this.currentPage,
     });
+    const enhancedPosts = this.createPhotoInPost(newPosts);
+    this.postsData = [...this.postsData, ...enhancedPosts];
+    return enhancedPosts;
+  }
 
-    this.postsData = [...this.postsData, ...newPosts];
-    return newPosts;
+  createPhotoInPost(posts) {
+    return posts.map((post) => ({
+      ...post,
+      photo: `https://picsum.photos/400?random=${post.id}`,
+    }));
   }
 
   async createPostsList(posts) {
