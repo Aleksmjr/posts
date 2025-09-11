@@ -3,7 +3,6 @@ import { createElement } from '../../../helpers';
 import { createPostCard } from '../postItem/postItem';
 import { Button } from '../../../ui/button/button';
 import styles from './posts.module.scss';
-import buttonStyles from '../postLoadingButton/postLoadingButton.module.scss';
 
 export default class PostList {
   postsData = [];
@@ -20,7 +19,7 @@ export default class PostList {
 
     this.loadMoreBtn = new Button({
       text: 'Load more...',
-      className: buttonStyles.posts__loading,
+      className: styles.posts__loading,
       mod: 'secondary',
     });
 
@@ -56,7 +55,24 @@ export default class PostList {
 
   async mount() {
     this.container.appendChild(this.postWrapper);
-    this.container.appendChild(this.loadMoreBtn);
+    this.createLoadMoreButton();
+  }
+
+  async loadNextPage() {
+    this.currentPage += 1;
+    const newPosts = await this.getPostsData();
+    await this.createPostsList(newPosts);
+  }
+
+  createLoadMoreButton() {
+    const loadMoreBtn = new Button({
+      text: 'Load more...',
+      className: styles.posts__loading,
+      mod: 'secondary',
+    });
+
+    loadMoreBtn.addEventListener('click', () => this.loadNextPage());
+    this.container.appendChild(loadMoreBtn);
   }
 
   async init() {
