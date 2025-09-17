@@ -1,19 +1,18 @@
 import { createPostsPage } from '../pages/posts';
 import { createContactsPage } from '../pages/contacts';
 import { createAboutPage } from '../pages/about';
-export class Routes {
+import { clearElement } from './clearElement';
+
+export class Router {
   root = document.getElementById('page-content');
   routes = {
-    '/': () => createAboutPage(this.root),
-    '/contacts': () => createContactsPage(this.root),
-    '/posts': () => createPostsPage(this.root),
+    '/': createAboutPage,
+    '/contacts': createContactsPage,
+    '/posts': createPostsPage,
   };
+
   constructor() {
     this.init();
-  }
-
-  clearRoot() {
-    this.root.innerHTML = '';
   }
 
   getElements() {
@@ -22,33 +21,47 @@ export class Routes {
 
   init() {
     this.getElements();
-
     this.addEventListeners();
+    this.setActiveMenuLink();
   }
 
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
+      e.preventDefault();
       const link = e.target.closest('[data-router-link]');
-      if (link) {
-        e.preventDefault();
-        this.currentRoute = link.getAttribute('href');
-        this.navigate();
+      if (!link || link.getAttribute('href') === this.currentRoute) {
+        return;
       }
+
+      this.currentRoute = link.getAttribute('href');
+      this.navigate();
     });
 
-    window.addEventListener('load', () => {
-      this.handleUrl();
-    });
+    window.addEventListener('load', () => this.handleUrl());
+    window.addEventListener('popstate', () => this.handleUrl());
+  }
 
-    window.addEventListener('popstate', () => {
-      this.handleUrl();
-    });
+  setActiveMenuLink() {
+    const ACTIVE_ATTR = 'data-router-link-active';
+
+    const prevActive = document.querySelector(`[${ACTIVE_ATTR}]`);
+    if (prevActive) {
+      prevActive.removeAttribute(ACTIVE_ATTR);
+    }
+
+    const currentLink = document.querySelector(
+      `a[href="${window.location.pathname}"]`,
+    );
+    if (currentLink) {
+      currentLink.setAttribute(ACTIVE_ATTR, '');
+    }
   }
 
   navigate() {
-    this.clearRoot();
+    clearElement(this.root);
     this.handleRouteChange();
     this.setUrl();
+    this.setActiveMenuLink();
   }
 
   handleRouteChange() {
@@ -61,12 +74,11 @@ export class Routes {
 
   handleUrl() {
     this.currentRoute = window.location.pathname;
-    this.clearRoot();
+    clearElement(this.root);
     this.handleRouteChange();
   }
 
   setUrl() {
     window.history.pushState({}, '', this.currentRoute);
-    this.handleUrl();
   }
 }

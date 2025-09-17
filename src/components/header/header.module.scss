@@ -2,17 +2,27 @@
 @use '../../styles/custom/media' as bp;
 
 .header {
+  position: fixed;
+  z-index: 1;
+
   width: 100%;
   padding: 16px;
+
+  backdrop-filter: blur(2px);
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include bp.bp(sm) {
+      justify-content: space-evenly;
+    }
   }
 
   &__sign {
     border: 1px solid fn.getColor(text, greenlight);
+    background-color: fn.getColor(bg, bgPurple);
   }
 
   &__link {
@@ -24,6 +34,12 @@
     gap: 4px;
     border-radius: 20px;
     background-color: fn.getColor(bg, bgPurple);
+
+    & [data-router-link-active] {
+      border: 1px solid #dedede;
+      color: fn.getColor(text, greenlight);
+      background: #ffffff;
+    }
   }
 
   &__logo {
@@ -39,8 +55,7 @@
     }
 
     @include bp.bp(sm) {
-      width: 60px;
-      height: 10px;
+      display: none;
     }
   }
 }

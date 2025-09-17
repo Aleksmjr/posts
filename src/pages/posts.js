@@ -1,13 +1,50 @@
-// создает содержимое внутри main, не имея отношения к header и footer
-// класс, который наследуется от pages (генерит новую разметку). При этом роутинг должен найти див рут и запихать туда этот эбаут. Определить роутинг можно через массив роутов, где каждый роут - это объект с полями path и component.
 import { createElement } from '../helpers/createElement';
+import { appendFabric } from '../helpers/appendFabric';
+import clsx from 'clsx';
+import styles from '../components/posts/postList/posts.module.scss';
+import PostList from '../components/posts/postList/PostList';
+import { clearElement } from '../helpers/clearElement';
 
-export function createPostsPage(root) {
-  const section = createElement({ tag: 'section' });
-  const container = createElement({ tag: 'div', className: 'container' });
-  const title = createElement({ tag: 'h2', content: 'Posts' });
+export async function createPostsPage() {
+  new PostPage();
+}
 
-  container.appendChild(title);
-  section.appendChild(container);
-  root.appendChild(section);
+export class PostPage {
+  root = document.getElementById('page-content');
+  constructor() {
+    if (!this.root) {
+      return;
+    }
+    this.initPosts();
+  }
+
+  async renderPostsWithButtonLoadMore() {
+    this.newPostLists = new PostList(this.container);
+    await this.newPostLists.init();
+    await this.newPostLists.mount();
+  }
+
+  createSectionLayout() {
+    this.section = createElement({ tag: 'section', className: 'posts' });
+    this.title = createElement({ tag: 'h2', content: 'Posts' });
+    this.container = createElement({
+      tag: 'div',
+      className: clsx('container', styles.posts__container),
+    });
+  }
+
+  appendElements() {
+    appendFabric([
+      [this.section, this.container],
+      [this.container, this.title],
+      [this.root, this.section],
+    ]);
+  }
+
+  async initPosts() {
+    clearElement(this.root);
+    this.createSectionLayout();
+    this.appendElements();
+    this.renderPostsWithButtonLoadMore();
+  }
 }

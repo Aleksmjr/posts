@@ -8,7 +8,7 @@ export function createHeader() {
   const header = createElement({ tag: 'header', className: styles.header });
   const container = createElement({
     tag: 'div',
-    className: clsx(styles.header__container, 'container'),
+    className: clsx('container', styles.header__container),
   });
 
   const logo = createElement({
@@ -21,7 +21,7 @@ export function createHeader() {
   const nav = createElement({ tag: 'nav', className: styles.header__nav });
 
   [
-    { href: '/', text: 'About', attrs: { 'data-router-link': '' } },
+    { href: '/about', text: 'About', attrs: { 'data-router-link': '' } },
     {
       href: '/contacts',
       text: 'Contacts',
@@ -39,7 +39,7 @@ export function createHeader() {
 
   const signUser = new Button({
     text: 'Sign',
-    className: 'header__sign',
+    className: styles.header__sign,
     mod: 'header',
     href: '#',
   });
