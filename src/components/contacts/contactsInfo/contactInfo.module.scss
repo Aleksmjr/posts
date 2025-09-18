@@ -1,0 +1,31 @@
+@use '../../../styles/global/function' as fn;
+
+.contact {
+  &__group {
+    margin: 80px 0;
+  }
+
+  &__portfolio {
+    &_item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &::before {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+
+        display: block;
+
+        width: 100%;
+        border-bottom: 1px solid fn.getColor(primary, active);
+      }
+
+      span {
+        color: fn.getColor(primary, active);
+      }
+    }
+  }
+}
