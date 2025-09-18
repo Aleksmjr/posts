@@ -5,7 +5,7 @@ export function createElement(props) {
 
   const el = document.createElement(props.tag);
 
-  props.content && (el.textContent = props.content);
+  props.content && (el.innerHTML = props.content);
 
   props.className && (el.className = props.className);
 
