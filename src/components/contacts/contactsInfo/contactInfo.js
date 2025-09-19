@@ -1,7 +1,7 @@
-import { createElement } from '../../../helpers';
 import { appendFabric } from '../../../helpers';
 import styles from './contactInfo.module.scss';
-import clsx from 'clsx';
+import { constructor } from '../../../helpers/constructor';
+const { section, h2, h3, container, div, p, span } = constructor();
 
 export class ContactInfo {
   constructor() {
@@ -12,59 +12,96 @@ export class ContactInfo {
     this.root = document.getElementById('page-content');
   }
 
-  createElements() {
-    this.section = createElement({ tag: 'section' });
-    this.container = createElement({
-      tag: 'div',
-      className: clsx('container', styles.contact__container),
-    });
-    this.title = createElement({ tag: 'h2', content: 'Contacts' });
-    this.group = createElement({
-      tag: 'div',
-      className: styles.contact__group,
-      content: `
-        <h3 class="${styles.contact__group_title}">Lorem lorem</h3>
-        <p class="${styles.contact__group_text}">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    `,
-    });
+  createSectionWithTitle() {
+    this.section = section();
+    this.container = container();
+    this.title = h2();
+    this.title.className = 'contact__title';
+    this.title.textContent = 'Contacts';
+    appendFabric([
+      [this.container.el, this.title.el],
+      [this.section.el, this.container.el],
+    ]);
+  }
 
-    this.subGroup = createElement({
-      tag: 'div',
-      className: styles.contact__group,
-      content: `
-         <h3 class="${styles.contact__subgroup_title}">Interests and hobbies</h3>
-         <p class="${styles.contact__subgroup_text}">
-         A little section to round out the professional purpose of this webpage. Who’s the person behind it, really? What do they like—and what are they like? Sections like this can go a little bit longer because it’s nice to learn more about what makes someone tick.</p>
-    `,
-    });
+  createGroup() {
+    this.group = div();
+    this.group.className = styles.contact__group;
+    this.contactGroupTitle = h3();
+    this.contactGroupTitle.textContent = 'Lorem lorem';
+    this.contactGroupText = p();
+    this.contactGroupText.textContent =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    this.contactGroupTextBottom = p();
+    this.contactGroupTextBottom.textContent =
+      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    appendFabric([
+      [
+        this.group.el,
+        [
+          this.contactGroupTitle.el,
+          this.contactGroupText.el,
+          this.contactGroupTextBottom.el,
+        ],
+      ],
+      [this.container.el, this.group.el],
+    ]);
+  }
 
-    this.portfolioWork = createElement({
-      tag: 'div',
-      className: styles.contact__portfolio,
-      content: `
-        <div class="${styles.contact__portfolio_item}"><h4>Agency name</h4><span>2025</span></div>
-        <div class="${styles.contact__portfolio_item}"><h4>Studio name</h4><span>2024</span></div>
-        <div class="${styles.contact__portfolio_item}"><h4>Company name</h4><span>2023</span></div>
-    `,
-    });
+  createSubGroup() {
+    this.subGroup = div();
+    this.subGroup.className = styles.contact__group;
+    this.subGroupTitle = h3();
+    this.subGroupTitle.textContent = 'Interests and hobbies';
+    this.subGroupText = p();
+    this.subGroupText.textContent =
+      ' A little section to round out the professional purpose of this webpage. Who’s the person behind it, really? What do they like—and what are they like? Sections like this can go a little bit longer because it’s nice to learn more about what makes someone tick.';
+    appendFabric([
+      [this.subGroup.el, [this.subGroupTitle.el, this.subGroupText.el]],
+      [this.container.el, this.subGroup.el],
+    ]);
+  }
+
+  createContactGroup() {
+    const text = [
+      ['Agency name', '2025'],
+      ['Studio name', '2024'],
+      ['Company name', '2023'],
+    ];
+
+    this.portfolioWork = div();
+    this.portfolioWork.className = styles.contact__group;
+
+    for (let i = 0; i < text.length; i++) {
+      const portfolioWorkName = p();
+      portfolioWorkName.textContent = text[i][0];
+      portfolioWorkName.className = styles.contact__portfolio_item;
+      const portfolioWorkYear = span();
+      portfolioWorkYear.textContent = text[i][1];
+      portfolioWorkYear.className = styles.contact__portfolio_item;
+      const portfolioWorkGroup = div();
+      portfolioWorkGroup.className = styles.contact__portfolio;
+      appendFabric([
+        [portfolioWorkGroup.el, [portfolioWorkName.el, portfolioWorkYear.el]],
+        [this.portfolioWork.el, portfolioWorkGroup.el],
+      ]);
+    }
   }
 
   appendElements() {
     appendFabric([
-      [
-        this.container,
-        [this.title, this.group, this.subGroup, this.portfolioWork],
-      ],
-      [this.section, this.container],
-      [this.root, this.section],
+      [this.container.el, this.portfolioWork.el],
+      [this.section.el, this.container.el],
+      [this.root, this.section.el],
     ]);
   }
 
   init() {
     this.getElements();
-    this.createElements();
+    this.createSectionWithTitle();
+    this.createGroup();
+    this.createSubGroup();
+    this.createContactGroup();
     this.appendElements();
   }
 }
