@@ -1,0 +1,53 @@
+@use './media' as bpUtil;
+@use '../../styles/global/function' as fn;
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include bpUtil.bp(md) {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+}
+
+body {
+  background-color: fn.getColor(bg, body);
+}
+
+div#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main#page-content {
+  flex: 1;
+  padding-top: 120px;
+
+  @include bpUtil.bp(lg) {
+    padding-top: 80px;
+  }
+
+  @include bpUtil.bp(md) {
+    padding-top: 40px;
+  }
+}
+
+img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+
+  vertical-align: middle;
+
+  object-fit: cover;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}

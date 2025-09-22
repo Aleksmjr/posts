@@ -1,0 +1,11 @@
+@use '../../styles/global/function' as fn;
+
+.infoList__portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid fn.getColor(primary, active);
+  & span.infoList__portfolio_item {
+    color: fn.getColor(primary, active);
+  }
+}

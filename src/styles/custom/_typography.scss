@@ -1,0 +1,52 @@
+@use '../global/function' as fn;
+@use './colors' as c;
+@use './media' as bpUtil;
+
+body,
+p,
+.paragraph {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1rem, 0.961rem + 0.182vw, 1.125rem);
+  font-weight: 400;
+  font-style: normal;
+  color: fn.getColor(text, main);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+h1,
+.heading_h1 {
+  margin-bottom: 80px;
+  font-size: clamp(1.75rem, 1.055rem + 3.273vw, 4rem);
+}
+
+h2,
+.heading_h2 {
+  margin-bottom: 40px;
+  font-size: clamp(1.5rem, 1.036rem + 2.182vw, 3rem);
+}
+
+h3,
+.heading_h3 {
+  margin-bottom: 24px;
+  font-size: clamp(1.125rem, 0.855rem + 1.273vw, 2rem);
+}
+
+a {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
+  font-weight: 400;
+  color: fn.getColor(text, main);
+}
+
+p {
+  margin-bottom: 12px;
+}

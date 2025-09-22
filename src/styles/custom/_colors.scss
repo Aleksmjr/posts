@@ -1,0 +1,32 @@
+$colors: (
+  primary: (
+    static: #2e3a59,
+    danger: #2e3a5900,
+    hover: #253046,
+    active: #bbbbbb,
+    dangerHover: #2e3a5910,
+  ),
+
+  secondary: (
+    static: #316b83,
+    hover: #275560,
+    active: #ccc,
+  ),
+
+  bg: (
+    main: #f7f7f7,
+    light: #ffffff,
+    darken: #dedede,
+    bluelight: #dcf0f9,
+    bgPurple: #e2c6ff,
+    purplelight: #e1c6ff50,
+    body: #d2f2ff,
+  ),
+
+  text: (
+    main: #333333,
+    light: #666666,
+    whiten: #ffffff,
+    greenlight: #a8e6cf,
+  ),
+);
