@@ -29,6 +29,10 @@ export function constructor() {
     return new Element({ tag: 'span' });
   }
 
+  function img() {
+    return new Element({ tag: 'img' });
+  }
+
   return {
     section,
     h2,
@@ -37,5 +41,6 @@ export function constructor() {
     div,
     p,
     span,
+    img,
   };
 }
