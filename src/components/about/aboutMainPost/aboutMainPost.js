@@ -1,7 +1,7 @@
 import { appendFabric } from '../../../helpers';
 import { constructor } from '../../../helpers/constructor';
 import styles from '../aboutMainPost/aboutMainPost.module.scss';
-
+import { InfoList } from '../../../shared/infoList/infoList';
 const { section, h2, h3, container, div, p, img } = constructor();
 
 export class AboutMainPost {
@@ -86,9 +86,20 @@ export class AboutMainPost {
     ]);
   }
 
+  infoList() {
+    return new InfoList([
+      ['Agency name', '2025'],
+      ['Studio name', '2024'],
+      ['Company name', '2023'],
+    ]);
+  }
+
   appendElements() {
     appendFabric([
-      [this.container.el, [this.postWrapper.el, this.galleryWrapper.el]],
+      [
+        this.container.el,
+        [this.postWrapper.el, this.galleryWrapper.el, this.infoList().el],
+      ],
       [this.root, this.section.el],
     ]);
   }

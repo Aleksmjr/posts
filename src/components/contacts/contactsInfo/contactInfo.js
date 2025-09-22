@@ -1,8 +1,8 @@
 import { appendFabric } from '../../../helpers';
 import styles from './contactInfo.module.scss';
 import { constructor } from '../../../helpers/constructor';
-const { section, h2, h3, container, div, p, span } = constructor();
-
+const { section, h2, h3, container, div, p } = constructor();
+import { InfoList } from '../../../shared/infoList/infoList';
 export class ContactInfo {
   constructor() {
     this.init();
@@ -62,35 +62,17 @@ export class ContactInfo {
     ]);
   }
 
-  createContactGroup() {
-    const text = [
+  infoList() {
+    return new InfoList([
       ['Agency name', '2025'],
       ['Studio name', '2024'],
       ['Company name', '2023'],
-    ];
-
-    this.portfolioWork = div();
-    this.portfolioWork.className = styles.contact__group;
-
-    for (let i = 0; i < text.length; i++) {
-      const portfolioWorkName = p();
-      portfolioWorkName.textContent = text[i][0];
-      portfolioWorkName.className = styles.contact__portfolio_item;
-      const portfolioWorkYear = span();
-      portfolioWorkYear.textContent = text[i][1];
-      portfolioWorkYear.className = styles.contact__portfolio_item;
-      const portfolioWorkGroup = div();
-      portfolioWorkGroup.className = styles.contact__portfolio;
-      appendFabric([
-        [portfolioWorkGroup.el, [portfolioWorkName.el, portfolioWorkYear.el]],
-        [this.portfolioWork.el, portfolioWorkGroup.el],
-      ]);
-    }
+    ]);
   }
 
   appendElements() {
     appendFabric([
-      [this.container.el, this.portfolioWork.el],
+      [this.container.el, this.infoList().el],
       [this.section.el, this.container.el],
       [this.root, this.section.el],
     ]);
@@ -101,7 +83,6 @@ export class ContactInfo {
     this.createSectionWithTitle();
     this.createGroup();
     this.createSubGroup();
-    this.createContactGroup();
     this.appendElements();
   }
 }
