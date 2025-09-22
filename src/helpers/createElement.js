@@ -28,15 +28,23 @@ export class Element {
 
     this.el = document.createElement(props.tag);
 
-    props.content && (this.el.innerHTML = props.content);
+    if (props.content) {
+      this.el.innerHTML = props.content;
+    }
+    if (props.className) {
+      this.el.className = props.className;
+    }
 
-    props.className && (this.el.className = props.className);
-
-    props.href && props.tag === 'a' && (this.el.href = props.href);
+    if (props.href && props.tag === 'a') {
+      this.el.href = props.href;
+    }
+    if (props.src && props.tag === 'img') {
+      this.el.src = props.src;
+    }
 
     if (props.attrs) {
-      Object.entries(props.attrs).forEach((item) => {
-        this.el.setAttribute(item[0], item[1]);
+      Object.entries(props.attrs).forEach(([key, value]) => {
+        this.el.setAttribute(key, value);
       });
     }
   }
@@ -44,26 +52,28 @@ export class Element {
   get textContent() {
     return this.el.textContent;
   }
-
   set textContent(value) {
     this.el.textContent = value;
   }
 
   get className() {
-    return this.el.classList;
+    return this.el.className;
   }
-
   set className(value) {
-    this.el.classList.add(value);
+    this.el.className = value;
   }
 
   set href(value) {
     this.el.href = value;
   }
 
+  set src(value) {
+    this.el.src = value;
+  }
+
   set attrs(value) {
-    Object.entries(value).forEach((item) => {
-      this.el.setAttribute(item[0], item[1]);
+    Object.entries(value).forEach(([key, val]) => {
+      this.el.setAttribute(key, val);
     });
   }
 }
