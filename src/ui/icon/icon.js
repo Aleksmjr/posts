@@ -12,7 +12,6 @@ export class Icon {
     this.icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const cls = clsList(className || styles.icon);
     this.icon.setAttribute('class', cls);
-    this.icon.setAttribute('viewBox', '0 0 24 24');
 
     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
     use.setAttribute('href', `/src/assets/image/sprite.svg#${name}`);
