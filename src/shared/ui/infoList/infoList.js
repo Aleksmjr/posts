@@ -1,6 +1,6 @@
-import { appendFabric } from '../../helpers';
+import { appendFabric } from '../../../helpers';
 import styles from './infoList.module.scss';
-import { constructor } from '../../helpers/constructor';
+import { constructor } from '../../../helpers/constructor';
 const { div, p, span } = constructor();
 
 export class InfoList {

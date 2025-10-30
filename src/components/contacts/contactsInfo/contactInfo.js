@@ -2,7 +2,7 @@ import { appendFabric } from '../../../helpers';
 import styles from './contactInfo.module.scss';
 import { constructor } from '../../../helpers/constructor';
 const { section, h2, h3, container, div, p } = constructor();
-import { InfoList } from '../../../shared/infoList/infoList';
+import { InfoList } from '../../../shared/ui/infoList/infoList.js';
 export class ContactInfo {
   constructor() {
     this.init();

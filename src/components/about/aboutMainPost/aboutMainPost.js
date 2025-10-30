@@ -1,7 +1,7 @@
 import { appendFabric } from '../../../helpers';
 import { constructor } from '../../../helpers/constructor';
 import styles from '../aboutMainPost/aboutMainPost.module.scss';
-import { InfoList } from '../../../shared/infoList/infoList';
+import { InfoList } from '../../../shared/ui/infoList/infoList';
 const { section, h2, h3, container, div, p, img } = constructor();
 
 export class AboutMainPost {
