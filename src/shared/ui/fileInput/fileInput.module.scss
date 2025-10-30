@@ -1,15 +1,19 @@
-// .input {
-//   &__label {
-//     position: relative;
-//   }
+.post__modal {
+  &_label {
+    display: flex;
+  }
+  &_form {
+    &--preview {
+      display: block;
 
-//   &__file {
-//     cursor: pointer;
+      width: 60px;
+      height: 40px;
+      margin-left: 20px;
+      border-radius: 8px;
 
-//     position: absolute;
-//     z-index: 1004;
-//     inset: 0;
-
-//     opacity: 0;
-//   }
-// }
+      object-fit: cover;
+      object-position: top;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

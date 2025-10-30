@@ -19,8 +19,6 @@ class CreatePostModal {
 
     this.createModal();
     this.addEvents();
-
-    CreatePostModal.instance = this;
   }
 
   createModal() {
@@ -31,7 +29,7 @@ class CreatePostModal {
     this.title.textContent = 'Добавить новый пост';
 
     this.form = form();
-    this.form.className = 'post-form';
+    this.form.className = styles.post__modal_form;
 
     this.inputs = div();
     this.inputs.className = styles.post__modal_wrapper;
@@ -41,14 +39,10 @@ class CreatePostModal {
     this.date = input('date', 'Дата', 'DATE', 'off');
     this.message = textarea('Сообщение', 'MESSAGE');
 
-    this.preview = document.createElement('img');
-    this.preview.style.width = '200px';
-
     this.fileInput = new FileInput({
       text: 'Выбрать изображение',
       id: 'upload-file',
       previewElement: this.preview,
-      onUpload: (file) => console.log('Выбран файл:', file.name),
     });
 
     this.sendBtn = new Button({
@@ -65,7 +59,6 @@ class CreatePostModal {
         [this.author.el, this.email.el, this.date.el, this.message.el],
       ],
       [this.form.el, this.fileInput],
-      [this.form.el, this.preview],
       [this.form.el, this.sendBtn],
     ]);
 
