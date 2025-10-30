@@ -27,14 +27,17 @@ export class Router {
 
   addEventListeners() {
     document.body.addEventListener('click', (e) => {
-      e.preventDefault();
       const link = e.target.closest('[data-router-link]');
+
+      if (link) {
+        e.preventDefault();
+        this.currentRoute = link.getAttribute('href');
+        this.navigate();
+      }
+
       if (!link || link.getAttribute('href') === this.currentRoute) {
         return;
       }
-
-      this.currentRoute = link.getAttribute('href');
-      this.navigate();
     });
 
     window.addEventListener('load', () => this.handleUrl());
