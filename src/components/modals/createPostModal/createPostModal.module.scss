@@ -10,6 +10,7 @@
 
   display: block;
 
+  width: 50%;
   max-width: 90%;
   max-height: 90%;
   padding: 60px;
@@ -20,6 +21,12 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   transition: translate 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &_close {
+    top: 15px;
+    right: 15px;
+    padding: 4px;
+  }
 
   &_wrapper {
     display: flex;

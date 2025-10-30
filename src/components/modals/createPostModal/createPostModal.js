@@ -5,7 +5,6 @@ const { h2, div, input, form, textarea } = constructor();
 import { Button } from '../../../ui/button/button';
 import Overlay from '../../../shared/ui/overlay/overlay';
 import { FileInput } from '../../../shared/ui/fileInput/fileInput';
-
 class CreatePostModal {
   static instance = null; // ✅ защита от дубликатов
 
@@ -24,6 +23,17 @@ class CreatePostModal {
   createModal() {
     this.wrapper = div();
     this.wrapper.className = styles.post__modal;
+
+    this.closeModal = new Button({
+      className: styles.post__modal_close,
+      mod: 'close',
+      href: '#',
+      icon: 'close',
+      onClick: (e) => {
+        e.preventDefault();
+        this.close();
+      },
+    });
 
     this.title = h2();
     this.title.textContent = 'Добавить новый пост';
@@ -52,6 +62,7 @@ class CreatePostModal {
 
     appendFabric([
       [this.wrapper.el, this.title.el],
+      [this.wrapper.el, this.closeModal],
       [this.wrapper.el, this.form.el],
       [this.form.el, this.inputs.el],
       [
